@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="./procesaArchivo.php" method="post">
+      <label for="userName">Nombre de Usuario</label>
+      <input type="text" name="userName" id="userName" />
+      <label for="password">Password</label>
+      <input type="text" name="password" id="password" />
+      <label for="tipo">Tipo</label>
+      <input type="text" name="tipo" id="tipo" />
+      <label for="status">Status</label>
+      <input type="text" name="status" id="status" />
+      <select name="tipoArchivo" id="tipoArchivo">
+        <option value=".csv">.csv</option>
+        <option value=".txt">.txt</option>
+        <option value=".xml">.xml</option>
+        <option value="otro">Otro</option>
+      </select>
+      <button type="submit">Subir</button>
+    </form>
+  </body>
+</html>
