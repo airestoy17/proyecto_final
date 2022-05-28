@@ -11,22 +11,22 @@ echo <<<END
                     <a class="nav-link" href="#">Incio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../see/CIpropietario.php">Propietarios</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CIpropietario.php">Propietarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Licencias</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CIlicencias.php">Licencias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Conductores</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CIconductores.php">Conductores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Multas</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CImultas.php">Multas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tarjetas de verificación</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CItarjeta_verificacion.php">Tarjetas de verificación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tarjetas de circulación</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CItarjeta_verificacion.php">Tarjetas de circulación</a>
                 </li>
             </ul>
         </div>
