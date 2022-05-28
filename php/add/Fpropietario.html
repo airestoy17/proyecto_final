@@ -42,43 +42,23 @@
             action="Ipropietario.php"
             novalidate
           >
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="nombre">Nombre</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="nombre"
-                  placeholder=""
-                  value=""
-                  required
-                />
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="apellidos">Apellidos</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="apellidos"
-                  placeholder=""
-                  value=""
-                  required
-                />
-                <div class="invalid-feedback">Valid last name is required.</div>
-              </div>
+            <div class="mb-3">
+              <label for="nombre">Nombre completo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid first name is required.</div>
             </div>
 
             <div class="mb-3">
               <label for="RFC">RFC </label>
-              <input
-                type="text"
-                class="form-control"
-                id="RFC"
-                placeholder=""
-              />
+              <input type="text" class="form-control" id="RFC" placeholder="" />
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -90,6 +70,7 @@
                   type="text"
                   class="form-control"
                   id="municipio"
+                  name="municipio"
                   placeholder="Querétaro"
                 />
                 <div class="invalid-feedback">
@@ -102,6 +83,7 @@
                   type="text"
                   class="form-control"
                   id="localidad"
+                  name="localidad"
                   placeholder="Milenio III"
                 />
                 <div class="invalid-feedback">
@@ -121,26 +103,6 @@
         <p class="mb-1">&copy; Sistema de control vehicular</p>
       </footer>
     </div>
-    <!--
-    <form method="get" id="form" action="Ipropietario.php">
-      <label for="idPropietario">ID Propietario</label>
-      <input type="text" name="idPropietario" id="idPropietario" />
-      <br />
-      <label for="nombre">Nombre</label>
-      <input type="text" name="nombre" id="nombre" />
-      <br />
-      <label for="municipio">Municipio</label>
-      <input type="text" name="municipio" id="municipio" />
-      <br />
-      <label for="localidad">Localidad</label>
-      <input type="text" name="localidad" id="localidad" />
-      <br />
-      <label for="RFC">RFC</label>
-      <input type="text" name="RFC" id="RFC" />
-      <br />
-      <button type="submit">Subir</button>
-    </form>
-    -->
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function () {
