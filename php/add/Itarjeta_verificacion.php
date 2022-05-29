@@ -17,14 +17,14 @@
     $horaEntrada = $_REQUEST['horaEntrada'];
 
 
-    print("idVerifiacion: ".$idVerifiacion."</br>");
+   // print("idVerifiacion: ".$idVerifiacion."</br>");
     print("tipoServicio: ".$tipoServicio."</br>");
     print("entidad: ".$entidad."</br>");
     print("municipio: ".$municipio."</br>");
     print("numLineaVerifiacion: ".$numLineaVerifiacion."</br>");
-    print("asiento: ".$asiento."</br>");
-    print("combustible: ".$combustible."</br>");
-    print("transmision: ".$transmision."</br>");
+    //print("asiento: ".$asiento."</br>");
+    //print("combustible: ".$combustible."</br>");
+   // print("transmision: ".$transmision."</br>");
     print("tecnicoVerificador: ".$tecnicoVerificador."</br>");
     print("fechaExp: ".$fechaExp."</br>");
     print("horaSalida: ".$horaSalida."</br>");
