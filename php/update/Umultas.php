@@ -39,37 +39,137 @@ Desconectar($Con);
 
         <div class="row">
             <div class="col-md-12 order-md-1">
-                <h4 class="mb-3">Folio</h4>
-                <form class="needs-validation" method="get" action="Ipropietario.php" novalidate>
-                    <div class="mb-3">
+                <h4 class="mb-3">Multa</h4>
+                <form class="needs-validation" method="get" action="Imulta_vehicular.php" novalidate>
+                    
+                <div class="row">
+                    <div class="col-md-6 mb-3">
                         <label for="folio">Folio</label>
-                        <input type="text" class="form-control" id="folio" placeholder="" value="<?php print($Fila[1]); ?>" required />
+                        <input type="text" class="form-control" id="folio" name="folio" placeholder="" value="" required />
                         <div class="invalid-feedback">Valid folio is required.</div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="clave">clave</label>
-                        <input type="text" class="form-control" id="folio" placeholder="" value="<?php print($Fila[4]); ?>"/>
+                        <input type="text" class="form-control" id="clave" name="clave" placeholder="" value=""/>
                         <div class="invalid-feedback">
-                            Valid folio is required.
+                            Valid Clave is required.
                         </div>
                     </div>
+</div>
+        
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="motivo">Motivo</label>
-                            <input type="text" class="form-control" id="motivo" placeholder="Querétaro" value="<?php print($Fila[2]); ?>"/>
+                            <input type="text" class="form-control" id="motivo" name="motivo" placeholder="" value=""/>
                             <div class="invalid-feedback">
                                 Valid Motivo is requied.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="fundamento">Fundamento</label>
-                            <input type="text" class="form-control" id="fundamento" placeholder="Milenio III" value="<?php print($Fila[3]); ?>"/>
+                            <input type="text" class="form-control" id="fundamento" name="fundamento" placeholder="" value=""/>
                             <div class="invalid-feedback">
                                 Valid Fundamento is required.
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid fecha is requied.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="hora">Hora</label>
+                            <input type="time" class="form-control" id="hora" name="hora" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Hora is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="lugar">Lugar</label>
+                            <input type="text" class="form-control" id="lugar" name="lugar" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Lugar is requied.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="conductor">Conductor</label>
+                            <input type="text" class="form-control" id="conductor" name="conductor" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Conductor is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="entidad">Entidad</label>
+                            <input type="text" class="form-control" id="entidad" name="entidad" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Entidad is requied.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="garantia">Garantia</label>
+                            <input type="text" class="form-control" id="garantia" name="garantia" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Garantia is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="agente">Agente</label>
+                            <input type="text" class="form-control" id="agente" name="agente" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Agente is requied.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="numLicencia">Numero de licencia</label>
+                            <input type="text" class="form-control" id="numLicencia" name="numLicencia" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Numero de licencia is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="id">Id</label>
+                            <input type="text" class="form-control" id="id" name="id" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Id is requied.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="folioCirculacion">Folio de circulacion</label>
+                            <input type="text" class="form-control" id="folioCirculacion" name="folioCirculacion" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Folio de circulacion is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="propietario">Propietario</label>
+                            <input type="text" class="form-control" id="propietario" name="propietario" placeholder="" value=""/>
+                            <div class="invalid-feedback">
+                                Valid Propietario is requied.
+                            </div>
+                        </div>
+                    </div>
+
                     <hr class="mb-4" />
                     <button class="btn btn-primary btn-lg btn-block" type="submit">
                         Continue to checkout
@@ -84,6 +184,41 @@ Desconectar($Con);
             <p class="mb-1">&copy; Sistema de control vehicular</p>
         </footer>
     </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            "use strict";
+
+            window.addEventListener(
+                "load",
+                function() {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName("needs-validation");
+
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(
+                        forms,
+                        function(form) {
+                            form.addEventListener(
+                                "submit",
+                                function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add("was-validated");
+                                },
+                                false
+                            );
+                        }
+                    );
+                },
+                false
+            );
+        })();
+    </script>
+
 <!--
     <form action="Umultas.php" id="form">
         <label for="Folio">Folio</label>
