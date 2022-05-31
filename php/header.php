@@ -17,7 +17,7 @@ echo <<<END
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Licencias</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/proyecto_final/php/see/CIlicencias.php">Ver todas las licencias</a>
-                        <a class="dropdown-item" href="#">Sacar comprobante</a>
+                        <a class="dropdown-item" href="/proyecto_final/php/pdf/LicenciaWrapper.php">Sacar comprobante</a>
                     </div>
                 </li>
                 <li class="nav-item">
