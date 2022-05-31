@@ -32,7 +32,7 @@ function manejarArchivoImagen($file, $dir)
             echo "The file " . basename($fileName) . " has been uploaded";
             return $uploadDirectory . basename($fileTmpName) . '.' . $fileExtension;
         } else {
-            echo "An error occurred. Please contact the administrator.";
+    echo "An error occurred. Please contact the administrator.";
             return '';
         }
     } else {

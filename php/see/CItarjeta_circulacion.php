@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['Bandera'])) {
+    include("Conexion.php");
 } else {
     print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
 }
@@ -19,29 +20,30 @@ if (isset($_SESSION['Bandera'])) {
 <body>
     <?php include('../header.php') ?>
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-lg-10">
-                <h1 class="mb-4 mt-4">Tarjetas circulacion</h1>
+        <div class="row" style"margin: 0;">
+            <div class="col-lg-6">
+                <h1 class="mb-4 mt-4">Tarjetas circulación</h1>
             </div>
-            <?php
-                if($_SESSION['Admin'] == 1){
-                    print(
-                    '<div class="col-lg-1">
-                        <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+            <div class="col-lg-6">
+                <form action="./CItarjeta_circulacion.php">
+                    <div class="row">
+                        <?php
+                            include('CIbuscar.php');
+                            $SQL = "SELECT * FROM TarjetasDeCirculacion";
+                            if($_SESSION['Admin'] == 1){
+                                print('
+                                    <div class="col-lg-4">
+                                        <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir tarjeta</a>
+                                    </div>
+                                ');
+                                generar_buscar($SQL);
+                            } else {
+                                generar_buscar($SQL);
+                            }
+                        ?>
                     </div>
-                    <div class="col-lg-1">
-                        <a href="./../add/Ftarjeta_circulacion.php" class="btn btn-primary float-right mb-4 mt-4">Añadir tarjeta circulacion</a>
-                    </div>
-                    '
-                    );
-                } else {
-                    print(
-                    '<div class="col-lg-2">
-                        <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-                    </div>'
-                    );
-                }
-            ?>
+                </form>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -49,10 +51,16 @@ if (isset($_SESSION['Bandera'])) {
                 # Subir datos para busqueda 
 
                 # Datos para busqueda
-                include("Conexion.php");
                 include("Crear_tabla.php");
                 $Con = Conectar();
-                $SQL = "SELECT * FROM TarjetasDeCirculacion";
+                if(isset($_REQUEST['search-field'])){
+                    $search_field = $_REQUEST['search-field'];
+                    $search_value = $_REQUEST['search-value'];
+                    $SQL = "SELECT * FROM TarjetasDeCirculacion
+                            WHERE $search_value = $search_value";
+                } else {
+                    $SQL = "SELECT * FROM TarjetasDeCirculacion";
+                }
                 $Result = Ejecutar($Con, $SQL);
                 crear_tabla($Result);
                 ?>
