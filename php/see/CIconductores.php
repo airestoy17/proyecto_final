@@ -27,7 +27,7 @@ if (isset($_SESSION['Bandera'])) {
                 <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
             </div>
             <div class="col-lg-1">
-                <a href="./../add/Fconductores.html" class="btn btn-primary float-right mb-4 mt-4">Añadir conductor</a>
+                <a href="./../add/Fconductores.php" class="btn btn-primary float-right mb-4 mt-4">Añadir conductor</a>
             </div>
         </div>
         <div class="row">

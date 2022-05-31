@@ -79,6 +79,7 @@ function manejarArchivoSeguridad($file, $row)
                 return 1;
             }
             return 0;
+            
         } else {
             echo "An error occurred. Please contact the administrator.";
             return 0;
