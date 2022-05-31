@@ -14,9 +14,9 @@ echo <<<END
                     <a class="nav-link" href="/proyecto_final/php/see/CIpropietario.php">Propietarios</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/proyecto_final/php/see/CIlicencias.php">Licencias</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Licencias</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver todas las licencias</a>
+                        <a class="dropdown-item" href="/proyecto_final/php/see/CIlicencias.php">Ver todas las licencias</a>
                         <a class="dropdown-item" href="#">Sacar comprobante</a>
                     </div>
                 </li>
@@ -24,16 +24,19 @@ echo <<<END
                     <a class="nav-link" href="/proyecto_final/php/see/CIconductores.php">Conductores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/proyecto_final/php/see/CImultas.php">Multas</a>
+                    <a class="nav-link" href="/proyecto_final/php/see/CImulta_vehicular.php">Multas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/proyecto_final/php/see/CIvehiculos.php">Vehiculos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/proyecto_final/php/see/CItarjeta_verificacion.php">Tarjetas de verificación</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/proyecto_final/php/see/CItarjeta_circulacion.php">Tarjetas de circulación</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjetas de circulación</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" href="#">Ver todas las tarjetas</a>
-                        <a class="dropdown-item" href="#">Sacar comprobante</a>
+                        <a class="dropdown-item" href="/proyecto_final/php/see/CItarjeta_circulacion.php">Ver todas las tarjetas</a>
+                        <a class="dropdown-item" href="">Sacar comprobante</a>
                     </div>
                 </li>
             </ul>

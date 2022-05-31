@@ -1,9 +1,10 @@
 <?php
-$Llave=$_POST['idVerifiacion'];
+$Llave=$_REQUEST['Id'];
 include('Conexion.php');
 $Con = Conectar();
-$SQL = "DELETE TarjetasdeVerificacion FROM WHERE FolioCertificado=$Llave";
+$SQL = "DELETE FROM Propietarios WHERE Id=$Llave";
 $Result = Ejecutar($Con, $SQL);
 $Registros_afectados = mysqli_affected_rows($Con);
 print("Registros eliminados: ".$Registros_afectados);
 Desconectar($Con);
+header("Location: /proyecto_final/php/see/CIpropietario.php");
