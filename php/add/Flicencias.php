@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera'])) {
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -73,7 +80,6 @@
                   Valid first name is required.
                 </div>
               </div>
-
             </div>
 
             <div class="row">
@@ -183,35 +189,5 @@
         );
       })();
     </script>
-    <!--
-    <form method="get" id="form" action="Ilicencias.php">
-      <label for="NumLicencia">NumLicencia</label>
-      <input type="text" name="numLicencia" id="numLicencia" />
-      <br />
-      <label for="Tipo">Tipo</label>
-      <input list="tipos" name="tipos" id="tipos" />
-      <datalist id="tipos">
-        <option value="A"></option>
-        <option value="B"></option>
-        <option value="C"></option>
-        <option value="D"></option>
-        <option value="E"></option>
-      </datalist>
-      <br />
-      <label for="fechaExp">Fecha de expedición</label>
-      <input type="date" name="fechaExp" id="fechaVen" />
-      <br />
-      <input type="date" name="fechaVen" id="fechaVen" />
-      <label for="fechaVen">Fecha de Vencimiento</label>
-      <br />
-      <label for="restriccion">Restricción</label>
-      <input type="text" name="restriccion" id="restriccion" />
-      <br />
-      <label for="idConductor">Id de Conductor</label>
-      <input type="text" name="idConductor" id="idConductor" />
-      <br />
-      <button type="submit">Subir</button>
-    </form>
--->
   </body>
 </html>

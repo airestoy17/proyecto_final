@@ -40,16 +40,23 @@ Desconectar($Con);
         <div class="row">
             <div class="col-md-12 order-md-1">
                 <h4 class="mb-3">Información personal</h4>
-                <form class="needs-validation" method="get" action="Ipropietario.php" novalidate>
+                <form class="needs-validation" method="get" action="./Upropietarios.php" novalidate>
+
+                    <div class="mb-3">
+                        <label for="Id">Id</label>
+                        <input type="text" class="form-control" id="Id" name="Id" value="<?php print($Fila[0]); ?>" required />
+                        <div class="invalid-feedback">Valid first name is required.</div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="" value="<?php print($Fila[1]); ?>" required />
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?php print($Fila[4]); ?>" required />
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="RFC">RFC </label>
-                        <input type="text" class="form-control" id="RFC" placeholder="" value="<?php print($Fila[4]); ?>"/>
+                        <input type="text" class="form-control" id="RFC" name="RFC" value="<?php print($Fila[1]); ?>"/>
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
@@ -57,14 +64,14 @@ Desconectar($Con);
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="municipio">Municipio</label>
-                            <input type="text" class="form-control" id="municipio" placeholder="Querétaro" value="<?php print($Fila[2]); ?>"/>
+                            <input type="text" class="form-control" id="municipio" name="municipio" value="<?php print($Fila[2]); ?>"/>
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="localidad">Localidad</label>
-                            <input type="text" class="form-control" id="localidad" placeholder="Milenio III" value="<?php print($Fila[3]); ?>"/>
+                            <input type="text" class="form-control" id="localidad" name="localidad" value="<?php print($Fila[3]); ?>"/>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
                             </div>
@@ -72,7 +79,7 @@ Desconectar($Con);
                     </div>
                     <hr class="mb-4" />
                     <button class="btn btn-primary btn-lg btn-block" type="submit">
-                        Continue to checkout
+                       Actualizar propietario 
                     </button>
                 </form>
             </div>
@@ -82,26 +89,6 @@ Desconectar($Con);
             <p class="mb-1">&copy; Sistema de control vehicular</p>
         </footer>
     </div>
-    <!--
-    <form method="get" id="form" action="Ipropietario.php">
-      <label for="idPropietario">ID Propietario</label>
-      <input type="text" name="idPropietario" id="idPropietario" />
-      <br />
-      <label for="nombre">Nombre</label>
-      <input type="text" name="nombre" id="nombre" />
-      <br />
-      <label for="municipio">Municipio</label>
-      <input type="text" name="municipio" id="municipio" />
-      <br />
-      <label for="localidad">Localidad</label>
-      <input type="text" name="localidad" id="localidad" />
-      <br />
-      <label for="RFC">RFC</label>
-      <input type="text" name="RFC" id="RFC" />
-      <br />
-      <button type="submit">Subir</button>
-    </form>
-    -->
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function() {
@@ -136,30 +123,12 @@ Desconectar($Con);
         })();
     </script>
 
-    <!-- 
-    <h1>Actualizar Propietario</h1>
-    <form method="get" id="form" action="Upropietarios.php">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" value='<?php print($Fila[1]); ?>' />
-        <br />
-        <label for="municipio">Municipio</label>
-        <input type="text" name="municipio" id="municipio" value='<?php print($Fila[2]); ?>' />
-        <br />
-        <label for="localidad">Localidad</label>
-        <input type="text" name="localidad" id="localidad" value='<?php print($Fila[3]); ?>' />
-        <br />
-        <label for="RFC">RFC</label>
-        <input type="text" name="RFC" id="RFC" value='<?php print($Fila[4]); ?>' />
-        <br />
-        <button type="submit">Subir</button>
-    </form>
-    -->
 </body>
 
 </html>
 
 <?php
-if (isset($_GET['idPropietario'])) {
+if (isset($_GET['nombre'])) {
     $id = $_REQUEST['Id'];
     $nombre = $_GET['nombre'];
     $municipio = $_GET['municipio'];
@@ -167,9 +136,9 @@ if (isset($_GET['idPropietario'])) {
     $rfc = $_GET['RFC'];
 
     $Con = Conectar();
-    $SQL = "UPDATE `Propietarios` SET `Id`='$id',`RFC`='$rfc',
+    $SQL = "UPDATE `Propietarios` SET `RFC`='$rfc',
             `Municipio`='$municipio', `Localidad`='$localidad',`Nombre`='$nombre' 
-            WHERE 1";
+            WHERE `Id`='$id'";
     $Result = Ejecutar($Con, $SQL);
     print("Registros actualizados = " . mysqli_affected_rows($Con));
     Desconectar($Con);

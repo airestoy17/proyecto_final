@@ -1,5 +1,5 @@
 <?php
-require('../fpdf.php');
+require('./fpdf.php');
 include('./Conexion.php');
 
 /* Conectar a la base de datos */

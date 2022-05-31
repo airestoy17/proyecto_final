@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera'])) {
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,9 +41,10 @@
         <div class="col-md-12 order-md-1">
           <h4 class="mb-3">Información personal</h4>
           <form
-            class="needs-validation"
+            class="needs-validation "
             action="./Iconductores.php"
-            method="get"
+            method="post"
+            enctype="multipart/form-data"
             novalidate
           >
             <div class="mb-3">
@@ -60,6 +68,20 @@
                 class="form-control"
                 id="nombre"
                 name="nombre"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid first name is required.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="domicilio">Domicilio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="domicilio"
+                name="domicilio"
                 placeholder=""
                 value=""
                 required
@@ -137,6 +159,21 @@
                   Please provide a valid state.
                 </div>
               </div>
+            </div>
+
+            <div class="mb-3 form-check-inline">
+              <input
+                type="checkbox"
+                class="form-control"
+                id="donador"
+                name="donador"
+                placeholder=""
+                value=""
+                required
+              />
+              <label for="donador">¿Es donador de órganos?</label>
+
+              <div class="invalid-feedback">Valid first name is required.</div>
             </div>
 
             <hr class="mb-4" />

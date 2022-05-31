@@ -43,6 +43,17 @@
             novalidate
           >
             <div class="mb-3">
+              <label for="id">Id</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                name="id"
+                required
+              />
+              <div class="invalid-feedback">Valid first name is required.</div>
+            </div>
+            <div class="mb-3">
               <label for="nombre">Nombre completo</label>
               <input
                 type="text"
@@ -58,7 +69,13 @@
 
             <div class="mb-3">
               <label for="RFC">RFC </label>
-              <input type="text" class="form-control" id="RFC" placeholder="" />
+              <input
+                type="text"
+                class="form-control"
+                id="RFC"
+                name="RFC"
+                placeholder=""
+              />
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>

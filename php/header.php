@@ -13,8 +13,12 @@ echo <<<END
                 <li class="nav-item">
                     <a class="nav-link" href="/proyecto_final/php/see/CIpropietario.php">Propietarios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/proyecto_final/php/see/CIlicencias.php">Licencias</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/proyecto_final/php/see/CIlicencias.php">Licencias</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Ver todas las licencias</a>
+                        <a class="dropdown-item" href="#">Sacar comprobante</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/proyecto_final/php/see/CIconductores.php">Conductores</a>
@@ -25,8 +29,12 @@ echo <<<END
                 <li class="nav-item">
                     <a class="nav-link" href="/proyecto_final/php/see/CItarjeta_verificacion.php">Tarjetas de verificación</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/proyecto_final/php/see/CItarjeta_verificacion.php">Tarjetas de circulación</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/proyecto_final/php/see/CItarjeta_circulacion.php">Tarjetas de circulación</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" href="#">Ver todas las tarjetas</a>
+                        <a class="dropdown-item" href="#">Sacar comprobante</a>
+                    </div>
                 </li>
             </ul>
         </div>

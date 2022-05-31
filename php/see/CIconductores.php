@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera'])) {
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +43,9 @@
                 $Result = Ejecutar($Con, $SQL);
                 crear_tabla($Result);
                 ?>
-                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
