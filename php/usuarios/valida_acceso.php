@@ -31,8 +31,10 @@ if ($Existe == 1) {
 
                 if ($f_certificate == 1) {
                     if ($Fila[2] == "A") {
+                        $_SESSION['Admin'] = 1;
                         print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=MenuA.php">');
                     } else {
+                        $_SESSION['Admin'] = 0;
                         print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=MenuU.php">');
                     }
                 } else {

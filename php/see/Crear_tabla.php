@@ -26,9 +26,10 @@ function crear_tabla($Result)
     # Añadir eliminar y actualizar encabezados
     //print("<th scope='col'>" . "Actualizar" . "</th>");
     //print("<th scope='col'>" . "Eliminar" . "</th>");
-    print("<th scope='col'>" . "Acciones" . "</th>");
-
-    print("</tr></thead>");
+    if ($_SESSION['Admin'] == 1) {
+        print("<th scope='col'>" . "Acciones" . "</th>");
+        print("</tr></thead>");
+    } 
 
     #Quitar la mayúscula del nombre de la tabla
     $tableName = strtolower(substr($tableName, 0, 1)) . substr($tableName, 1, strlen($tableName) - 1);
@@ -55,6 +56,7 @@ function crear_tabla($Result)
         }
 
         # Imprimir columna de actualización
+    if ($_SESSION['Admin'] == 1) {
         print("<td class='p-3'>");
         print("<a href='../update/U" . $tableName . ".php" . "?$PK=" . $Fila[0] . "' class='btn btn-outline-primary mr-4'>");
         print('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -71,6 +73,7 @@ function crear_tabla($Result)
         print("</a>");
         print("</td>");
         print("</tr>");
+    } 
     }
 
     print("</table>");
