@@ -1,6 +1,7 @@
 <?php
 require('./fpdf.php');
 include('./Conexion.php');
+include('../files/generarXML.php')
 
 /* Conectar a la base de datos */
 $licencia = $_GET['numLicencia'];
@@ -10,8 +11,13 @@ FROM Licencias L, Conductores C
 WHERE L.NumLicencia = '$licencia'
 AND L.IdConductor = C.Id;";
 $Result = Ejecutar($Con, $SQL);
-$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
+$Result2 = Ejecutar($Con, $SQL);
 /* -------------------------- */
+
+#Comprobante
+generarXML($Result2, 'licencia');
+$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
+
 
 $pdf = new FPDF();
 

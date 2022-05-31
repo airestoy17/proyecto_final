@@ -7,7 +7,8 @@
 * Author:  Olivier PLATHEY                                                     *
 *******************************************************************************/
 
-define('FPDF_VERSION','1.84');
+//define('FPDF_VERSION','1.84');
+if (!defined('FPDF_VERSION')) define('FPDF_VERSION', '1.84');
 
 class FPDF
 {

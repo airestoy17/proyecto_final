@@ -1,26 +1,30 @@
 <?php
-require('./Rotation.php');
+require_once('./Rotation.php');
 include('./Conexion.php');
+require_once('fpdf.php');
+include('../files/generarXML.php');
 
 /* Conectar a la base de datos */
-$licencia = 2;
+$licencia = $_GET['folio'];
 $Con = Conectar();
 $SQL = "SELECT V.*, TC.*, P.*, TV.Placa
 FROM TarjetasdeVerificacion TV, Vehiculos V, TarjetasDeCirculacion TC, Propietarios P
-WHERE TV.IdVehiculo = 1
-AND V.Id = 1
-AND TC.IdVehiculo = 1
+WHERE TC.Folio = $licencia
+AND TC.IdVehiculo = V.Id
 AND P.Id = TC.IdPropietario;";
 $Result = Ejecutar($Con, $SQL);
-$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
+$Result2 = Ejecutar($Con, $SQL);
 /* -------------------------- */
+
+generarXML($Result2, 'verificacion');
+$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
 
 $pdf = new PDF_Rotate('l');
 $pdf->AddPage();
 
 /* VARIABLES */
 $tipoServicio = utf8_decode('PARTICULAR');
-$propietario = utf8_decode($Fila['Nombre'].$Fila['apellidoMaterno'].$Fila['apellidoPaterno']);
+$propietario = utf8_decode($Fila['Nombre']);
 $folio = utf8_decode($Fila['Folio']);
 $vigencia = utf8_decode('INDEFINIDA');
 $placa = utf8_decode($Fila['Placa']);

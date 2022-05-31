@@ -36,7 +36,7 @@ echo <<<END
                     <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjetas de circulación</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                         <a class="dropdown-item" href="/proyecto_final/php/see/CItarjeta_circulacion.php">Ver todas las tarjetas</a>
-                        <a class="dropdown-item" href="">Sacar comprobante</a>
+                        <a class="dropdown-item" href="/proyecto_final/php/pdf/CirculacionWrapper.php">Sacar comprobante</a>
                     </div>
                 </li>
             </ul>

@@ -35,7 +35,7 @@ if (isset($_SESSION['Bandera'])) {
                     '
                     );
                 } else {
-                    print(
+                        print(
                     '<div class="col-lg-2">
                         <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
                     </div>'

@@ -21,24 +21,24 @@ if (isset($_SESSION['Bandera'])) {
     <div class="container-fluid">
         <div class="row ">
             <div class="col-lg-12">
-                <h1 class="mb-4 mt-4">Obtener licencia</h1>
+                <h1 class="mb-4 mt-4">Obtener tarjeta de circulación</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 order-md-1">
             <form
                 class="needs-validation"
-                action="./LicenciaBD.php"
+                action="./VerificacionBD.php"
                 method="get"
                 novalidate
             >
                 <div class="mb-3">
-                    <label for="numLicencia">Número de Licencia</label>
+                    <label for="folio">Folio</label>
                     <input
                     type="text"
                     class="form-control"
-                    id="numLicencia"
-                    name="numLicencia"
+                    id="folio"
+                    name="folio"
                     placeholder=""
                     />
                     <div class="invalid-feedback">
@@ -46,7 +46,7 @@ if (isset($_SESSION['Bandera'])) {
                     </div>
                 </div>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">
-                    Obtener documento de licencia
+                    Obtener documento de tarejta de circulacion
                 </button>
             </form>
         </div>
