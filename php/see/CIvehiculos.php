@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['Bandera'])) {
+    include("Conexion.php");
 } else {
     print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
 }
@@ -20,33 +21,33 @@ if (isset($_SESSION['Bandera'])) {
     <?php include('../header.php') ?>
     <div class="container-fluid">
         <div class="row ">
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <h1 class="mb-4 mt-4">Vehiculos</h1>
             </div>
-            <?php
-                if($_SESSION['Admin'] == 1){
-                    print(
-                    '<div class="col-lg-1">
-                        <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+            <div class="col-lg-6">
+                <form action="./CIvehiculos.php">
+                    <div class="row">
+                        <?php
+                            include('CIbuscar.php');
+                            $SQL = "SELECT * FROM Vehiculos";
+                            if($_SESSION['Admin'] == 1){
+                                print('
+                                    <div class="col-lg-4">
+                                        <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir tarjeta</a>
+                                    </div>
+                                ');
+                                generar_buscar($SQL);
+                            } else {
+                                generar_buscar($SQL);
+                            }
+                        ?>
                     </div>
-                    <div class="col-lg0">
-                        <a href="./../add/Fvehiculos.php" class="btn btn-primary float-right mb-3 mt-4">Añadir vehiculos</a>
-                    </div>
-                    '
-                    );
-                } else {
-                    print(
-                    '<div class="col-lg-2">
-                        <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-                    </div>'
-                    );
-                }
-            ?>
+                </form>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                include("Conexion.php");
                 include("Crear_tabla.php");
                 $Con = Conectar();
                 $SQL = "SELECT * FROM Vehiculos";

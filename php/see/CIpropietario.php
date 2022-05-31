@@ -24,31 +24,41 @@ if (isset($_SESSION['Bandera'])) {
             <div class="col-lg-6">
                 <h1 class="mb-4 mt-4">Propietarios</h1>
             </div>
-            <?php
-                include('CIbuscar.php');
-                $SQL = "SELECT * FROM Propietarios";
-                if($_SESSION['Admin'] == 1){
-                    print('
-                        <div class="col-lg-4">
-                            <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir propietario</a>
-                        </div>
-                    ');
-                    generar_buscar($SQL);
-                } else {
-                    generar_buscar($SQL);
-                }
-            ?>
+            <div class="col-lg-6">
+                <form action="./CIpropietario.php">
+                    <div class="row">
+                        <?php
+                            include('CIbuscar.php');
+                            $SQL = "SELECT * FROM Propietarios";
+                            if($_SESSION['Admin'] == 1){
+                                print('
+                                    <div class="col-lg-4">
+                                        <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir propietario</a>
+                                    </div>
+                                ');
+                                generar_buscar($SQL);
+                            } else {
+                                generar_buscar($SQL);
+                            }
+                        ?>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                # Subir datos para busqueda 
-                //$id = $_GET['ID'];
-
                 # Datos para busqueda
                 include("Crear_tabla.php");
                 $Con = Conectar();
-                $SQL = "SELECT * FROM Propietarios";
+                if(isset($_GET['search-field'])){
+                    $search_field = $_REQUEST['search-field'];
+                    $search_value = $_REQUEST['search-value'];
+                    $SQL = "SELECT * FROM Propietarios
+                            WHERE $search_field = $search_value";
+                } else {
+                    $SQL = "SELECT * FROM Propietarios";
+                }
                 $Result = Ejecutar($Con, $SQL);
                 crear_tabla($Result);
                 ?>

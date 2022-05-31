@@ -33,7 +33,7 @@ if (isset($_SESSION['Bandera'])) {
                             if($_SESSION['Admin'] == 1){
                                 print('
                                     <div class="col-lg-4">
-                                        <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir tarjeta</a>
+                                        <a href="./../add/Ftarjeta_circulacion.php" class="btn btn-primary float-right mb-4 mt-4">Añadir tarjeta</a>
                                     </div>
                                 ');
                                 generar_buscar($SQL);
@@ -48,8 +48,6 @@ if (isset($_SESSION['Bandera'])) {
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                # Subir datos para busqueda 
-
                 # Datos para busqueda
                 include("Crear_tabla.php");
                 $Con = Conectar();
@@ -57,7 +55,7 @@ if (isset($_SESSION['Bandera'])) {
                     $search_field = $_REQUEST['search-field'];
                     $search_value = $_REQUEST['search-value'];
                     $SQL = "SELECT * FROM TarjetasDeCirculacion
-                            WHERE $search_value = $search_value";
+                            WHERE $search_field = $search_value";
                 } else {
                     $SQL = "SELECT * FROM TarjetasDeCirculacion";
                 }

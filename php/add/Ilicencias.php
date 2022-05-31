@@ -1,7 +1,7 @@
 <?php
 $NumLicencia = $_GET['numLicencia'];
 $Tipo = $_GET['tipo'];
-$FechaExp = $_POST['fechaExp'];
+$FechaExp = $_GET['fechaExp'];
 $FechaVen = $_GET['fechaVen'];
 $Restriccion = $_GET['restriccion'];
 $ID = $_GET['idConductor'];

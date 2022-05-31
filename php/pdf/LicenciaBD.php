@@ -1,7 +1,7 @@
 <?php
 require('./fpdf.php');
 include('./Conexion.php');
-include('../files/generarXML.php')
+include('../files/generarXML.php');
 
 /* Conectar a la base de datos */
 $licencia = $_GET['numLicencia'];

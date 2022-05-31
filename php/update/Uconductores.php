@@ -33,10 +33,10 @@ Desconectar($Con);
         <div class="row">
             <div class="col-md-12 order-md-1">
                 <h4 class="mb-3">Información personal</h4>
-                <form class="needs-validation" action="./Iconductores.php" method="get" novalidate>
+                <form class="needs-validation" action="./Uconductores.php" method="get" novalidate>
                     <div class="mb-3">
-                        <label for="id">ID</label>
-                        <input type="text" class="form-control" id="id" name="id" value='<?php print($Fila[0]); ?>'/>
+                        <label for="Id">ID</label>
+                        <input type="text" class="form-control" id="Id" name="Id" value='<?php print($Fila[0]); ?>'/>
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
@@ -44,7 +44,7 @@ Desconectar($Con);
 
                     <div class="mb-3">
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required value='<?php print($Fila[3]); ?>'/>
+                        <input type="text" id="nombre" name="nombre" class="form-control"  required value='<?php print($Fila[3]); ?>'/>
                         <div class="invalid-feedback">Valid first name is required.</div>
                     </div>
 
@@ -98,6 +98,20 @@ Desconectar($Con);
                             </div>
                         </div>
                     </div>
+<div class="mb-3 form-check-inline">
+              <input
+                type="checkbox"
+                class="form-control"
+                id="donador"
+                name="donador"
+                placeholder=""
+                value=""
+                required
+              />
+              <label for="donador">¿Es donador de órganos?</label>
+
+              <div class="invalid-feedback">Valid first name is required.</div>
+            </div>
 
                     <hr class="mb-4" />
                     <button class="btn btn-primary btn-lg btn-block" type="submit">
@@ -149,30 +163,43 @@ Desconectar($Con);
 </html>
 
 <?php
-if (isset($_GET['nombre'])) {
-    $Id = $_REQUEST['Id'];
-    $nombre = $_GET['nombre'];
-    $domicilio = $_GET['domicilio'];
-    $grupoSangre = $_GET['grupoSangre'];
-    $firma = $_GET['firma'];
-    $foto = $_GET['foto'];
-    $donador = $_GET['donador'];
-    $antiguedad = $_GET['antiguedad'];
-    $fechaNacimiento = $_GET['fechaNacimiento'];
+if (isset($_REQUEST['nombre'])) {
+# Conseguir datos que no son archivos del formulario
+$id = $_GET['Id'];
+$nombre = $_GET['nombre'];
+$grupoSangre = $_GET['grupoSangre'];
+$firma = $_FILES['firma'];
+$foto = $_FILES['foto'];
+$donador = $_GET['donador'];
+$antiguedad = $_GET['antiguedad'];
+$fechaNacimiento = $_GET['fechaNacimiento'];
 
-    if ($donador == 'on') {
-        $donador = 1;
-    } else {
-        $donador = 0;
-    }
-
-    $Con = Conectar();
-    $SQL = "UPDATE `Conductores` SET `Domicilio`='$domicilio',
-            `GrupoSanguineo`='$grupoSangre',`Nombre`='$nombre',`FechaNacimiento`='$fechaNacimiento',
-            `Firma`='$firma', `Foto`='$foto',`Donador`='$donador',`Antigüedad`='$antiguedad' 
-            WHERE `Id` = $Id";
-    $Result = Ejecutar($Con, $SQL);
-    print("Registros actualizados = " . mysqli_affected_rows($Con));
-    Desconectar($Con);
+if ($donador == 'on') {
+    $donador = 1;
+} else {
+    $donador = 0;
 }
+
+# Conseguir imagénes para firmas y foto del conductor
+include('../files/upload_file.php');
+$resultadoFirma = manejarArchivoImagen($firma, 'firmas');
+$resultadoFoto =  manejarArchivoImagen($foto, 'fotos');
+
+if ($resultadoFirma != '' && $resultadoFoto != '') {
+    include("Conexion.php");
+    $Con = Conectar();
+    //$SQL="INSERT INTO Licencias VALUES ('$NumLicencia', '$Tipo','$FechaExp','$FechaVen','$Restriccion','$ID')";
+    $SQL = "INSERT INTO `Conductores`(`Id`, `Domicilio`, `GrupoSanguineo`, `Nombre`, `FechaNacimiento`, `Firma`, `Foto`, `Donador`, `Antigüedad`) 
+            VALUES ('$id','$domicilio','$grupoSangre','$nombre','$fechaNacimiento','$resultadoFirma','$resultadoFoto','$donador','$antiguedad')";
+    $Result = Ejecutar($Con, $SQL);
+    echo $Result;
+} else {
+    echo 'Error';
+}
+
+//print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/./proyecto_final/php/see/CIconductores.php">');
+
+   
+}
+
 ?>
