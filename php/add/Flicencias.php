@@ -95,18 +95,20 @@ if (isset($_SESSION['Bandera']) && isset($_SESSION['Admin']) && $_SESSION['Admin
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="fechaVen">Fecha de vencimiento</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="fechaVen"
-                  name="fechaVen"
-                  placeholder="Milenio III"
+              <div class="mb-3 col-md-6">
+                  <label for="vigencia">Vigencia</label>
+                <input 
+                list="vigencias"
+                class="form-control"
+                id="vigencia"
+                name="vigencia"
+                placeholder=""
                 />
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
+                <datalist id="vigencias">
+                  <option value="3">3 años</option>
+                  <option value="5">5 años</option>
+                </datalist>  
+                <div class="invalid-feedback">Valid vigencia is required</div>
               </div>
             </div>
 

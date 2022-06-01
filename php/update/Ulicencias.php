@@ -68,11 +68,19 @@ if (isset($_SESSION['Bandera']) && isset($_SESSION['Admin']) && $_SESSION['Admin
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="fechaVen">Fecha de vencimiento</label>
-              <input type="date" class="form-control" id="fechaVen" name="fechaVen" value='<?php print($Fila[3]); ?>' />
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
+              <label for="vigencia">Vigencia</label>
+                <input 
+                list="vigencias"
+                class="form-control"
+                id="vigencia"
+                name="vigencia"
+                placeholder=""
+                />
+                <datalist id="vigencias">
+                  <option value="3">3 años</option>
+                  <option value="5">5 años</option>
+                </datalist>  
+                <div class="invalid-feedback">Valid vigencia is required</div>
             </div>
           </div>
 
@@ -149,9 +157,14 @@ if (isset($_GET['tipo'])) {
   $NumLicencia = $_REQUEST['NumLicencia'];
   $Tipo = $_GET['tipo'];
   $FechaExp = $_GET['fechaExp'];
-  $FechaVen = $_GET['fechaVen'];
   $Restriccion = $_GET['restriccion'];
   $idConductor = $_GET['idConductor'];
+  $vigencia = $_GET['vigencia'];
+
+  $intervalo = strval($vigencia) . " years";
+  $date = date_create($FechaExp);
+  print($intervalo);
+  $FechaVen = date('Y-m-d', strtotime($FechaExp. " + $vigencia years"));
 
   $Con = Conectar();
   $SQL = "UPDATE Licencias SET Tipo = '$Tipo', FechaExp = '$FechaExp', FechaVencimiento = '$FechaVen',
