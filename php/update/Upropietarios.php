@@ -1,13 +1,18 @@
 <?php
-// Datos
-$id = $_REQUEST['Id'];
-// Conexión a la base de datos
-include("./Conexion.php");
-$Con = Conectar();
-$SQL = "SELECT * FROM Propietarios WHERE Id = '$id'";
-$Result = Ejecutar($Con, $SQL);
-$Fila = mysqli_fetch_row($Result);
-Desconectar($Con);
+session_start();
+if (isset($_SESSION['Bandera']) && isset($_SESSION['Admin']) && $_SESSION['Admin'] == 1) {
+    // Datos
+    $id = $_REQUEST['Id'];
+    // Conexión a la base de datos
+    include("./Conexion.php");
+    $Con = Conectar();
+    $SQL = "SELECT * FROM Propietarios WHERE Id = '$id'";
+    $Result = Ejecutar($Con, $SQL);
+    $Fila = mysqli_fetch_row($Result);
+    Desconectar($Con);
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
 ?>
 
 <!DOCTYPE html>
