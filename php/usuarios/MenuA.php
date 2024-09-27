@@ -1,11 +1,9 @@
 <?php
-/*
 session_start();
 if (isset($_SESSION['Bandera'])) {
 } else {
-    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=FAcceso.html">');
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
 }
-*/
 ?>
 <!doctype html>
 <html lang="en">

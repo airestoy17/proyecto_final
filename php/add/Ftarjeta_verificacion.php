@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera']) && isset($_SESSION['Admin']) && $_SESSION['Admin'] == 1) {
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,145 +37,34 @@
             d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
           />
         </svg>
-        <h2>Agregue una multa vehicular</h2>
+        <h2>Agregue una Tarjeta de Verificacion</h2>
       </div>
   
     <div class="row">
       <div class="col-md-12 order-md-1">
-        <h4 class="mb-3">Información de multa vehicular</h4>
+        <h4 class="mb-3">Información de Tarjeta de Verificacion</h4>
         <form
           class="needs-validation"
           method="get"
-          action="Imulta_vehicular.php"
+          action="Itarjeta_verificacion.php"
           novalidate
         >
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="folio">Folio</label>
+              <label for="tipoServicio">Tipo de servicio</label>
               <input
                 type="text"
                 class="form-control"
-                id="folio"
-                name="folio"
+                id="tipoServicio"
+                name="tipoServicio"
                 placeholder=""
                 value=""
                 required
               />
               <div class="invalid-feedback">
-                Valid Folio is required.
+                Valid Tipo de servicio is required.
               </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <label for="clave">Clave</label>
-              <input
-                type="text"
-                class="form-control"
-                id="clave"
-                name="clave"
-                placeholder=""
-                value=""
-                required
-              />
-              <div class="invalid-feedback">Valid Clave is required.</div>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="motivo">Motivo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="motivo"
-                name="motivo"
-                placeholder=""
-                value=""
-                required
-              />
-              <div class="invalid-feedback">
-                Valid motivo is required.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="fundamento">Fundamento</label>
-              <input
-                type="text"
-                class="form-control"
-                id="fundamento"
-                name="fundamento"
-                placeholder=""
-                value=""
-                required
-              />
-              <div class="invalid-feedback">Valid Fundamento is required.</div>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="fecha">Fecha</label>
-              <input
-                type="date"
-                class="form-control"
-                id="fecha"
-                name="fecha"
-                placeholder=""
-                required
-              />
-              <div class="invalid-feedback">
-                valid fecha is required.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="hora">Hora</label>
-              <input
-                type="time"
-                class="form-control"
-                id="hora"
-                name="hora"
-                placeholder=""
-                required
-              />
-              <div class="invalid-feedback">
-                valid id conductor is required.
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="lugar">Lugar</label>
-              <input
-                type="text"
-                class="form-control"
-                id="lugar"
-                name="lugar"
-                placeholder=""
-                value=""
-                required
-              />
-              <div class="invalid-feedback">
-                Valid Lugar is required.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="conductor">Conductor</label>
-              <input
-                type="text"
-                class="form-control"
-                id="conductor"
-                name="conductor"
-                placeholder=""
-                value=""
-                required
-              />
-              <div class="invalid-feedback">Valid Conductor is required.</div>
-            </div>
-          </div>
-
-          <div class="row">
             <div class="col-md-6 mb-3">
               <label for="entidad">Entidad</label>
               <input
@@ -180,104 +76,227 @@
                 value=""
                 required
               />
-              <div class="invalid-feedback">
-                Valid Entidad is required.
-              </div>
+              <div class="invalid-feedback">Valid Entidad is required.</div>
             </div>
+          </div>
+
+
+          <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="garantia">Garantia</label>
+              <label for="municipio">Municipio</label>
               <input
                 type="text"
                 class="form-control"
-                id="garantia"
-                name="garantia"
+                id="municipio"
+                name="municipio"
                 placeholder=""
                 value=""
                 required
               />
-              <div class="invalid-feedback">Valid Garantia is required.</div>
+              <div class="invalid-feedback">
+                Valid Municipio is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="numLineaVerifiacion">Numero linea de verificacion</label>
+              <input
+                type="text"
+                class="form-control"
+                id="numLineaVerifiacion"
+                name="numLineaVerifiacion"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid Numero linea de verificacion is required.</div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="tecnicoVerificador">Tecnico verificador</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tecnicoVerificador"
+                name="tecnicoVerificador"
+                placeholder=""
+                required
+              />
+              <div class="invalid-feedback">
+                valid Tecnico verificador is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="fechaExp">Fecha de expedicion</label>
+              <input
+                type="date"
+                class="form-control"
+                id="fechaExp"
+                name="fechaExp"
+                placeholder=""
+                required
+              />
+              <div class="invalid-feedback">
+                valid Fecha de expedicion is required.
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="agente">Agente</label>
+              <label for="horaSalida">Hora de salida</label>
               <input
-                type="text"
+                type="time"
                 class="form-control"
-                id="agente"
-                name="agente"
+                id="horaSalida"
+                name="horaSalida"
                 placeholder=""
                 value=""
                 required
               />
               <div class="invalid-feedback">
-                Valid Agente is required.
+                Valid Hora de salida is required.
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="numLicencia">Numero de licencia</label>
+              <label for="motivo">Motivo</label>
               <input
                 type="text"
                 class="form-control"
-                id="numLicencia"
-                name="numLicencia"
+                id="motivo"
+                name="motivo"
                 placeholder=""
                 value=""
                 required
               />
-              <div class="invalid-feedback">Valid Numero de licencia is required.</div>
+              <div class="invalid-feedback">Valid Motivo is required.</div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="id">Id de vehiculo</label>
+              <label for="folioCertificado">Folio Certificado</label>
               <input
                 type="text"
                 class="form-control"
-                id="id"
-                name="id"
+                id="folioCertificado"
+                name="folioCertificado"
                 placeholder=""
                 value=""
                 required
               />
               <div class="invalid-feedback">
-                Valid Id de vehiculo is required.
+                Valid Folio certificado is required.
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="folioCirculacion">Folio de circulacion</label>
+              <label for="semestre">Semestre</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="folioCirculacion"
-                name="folioCirculacion"
+                id="semestre"
+                name="semestre"
                 placeholder=""
                 value=""
                 required
               />
-              <div class="invalid-feedback">Valid Folio de circulacion is required.</div>
+              <div class="invalid-feedback">Valid Semestre is required.</div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="propietario">Propietario</label>
+              <label for="vigencia">Vigencia</label>
               <input
-                type="text"
+                type="date"
                 class="form-control"
-                id="propietario"
-                name="propietario"
+                id="vigencia"
+                name="vigencia"
                 placeholder=""
                 value=""
                 required
               />
               <div class="invalid-feedback">
-                Valid Propetiario is required.
+                Valid Vigencia is required.
               </div>
             </div>
-            
+            <div class="col-md-6 mb-3">
+              <label for="idVehiculo">Id de vehiculo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="idVehiculo"
+                name="idVehiculo"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid Id de vehiculo is required.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="placa">Placa</label>
+              <input
+                type="text"
+                class="form-control"
+                id="placa"
+                name="placa"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">
+                Valid Placa is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="tipoCarroceria">Tipo de carroceria</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tipoCarroceria"
+                name="tipoCarroceria"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid Tipo de carroceria is required.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="numCentro">Numero de centro</label>
+              <input
+                type="text"
+                class="form-control"
+                id="numCentro"
+                name="numCentro"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">
+                Valid Numero de centro is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="horaEntrada">Hora de entrada</label>
+              <input
+                type="time"
+                class="form-control"
+                id="horaEntrada"
+                name="horaEntrada"
+                placeholder=""
+                value=""
+                required
+              />
+              <div class="invalid-feedback">Valid Motivo is required.</div>
+            </div>
           </div>
 
           <hr class="mb-4" />
@@ -292,90 +311,58 @@
       <p class="mb-1">&copy; Sistema de control vehicular</p>
     </footer>
   </div>
-
     <!--
-    <form action="Imulta_vehicular.php" id="form">
-        <label for="folio">Folio</label>
-        <input type="text" name="folio" id="folio">
-        <br>
-        <label for="agente">Agente</label>
-        <input type="text" name="agente" id="agente">
-        <br>
-        <label for="clave">Clave Agente</label>
-        <input type="text" name="clave" id="clave">
-        <br>
-        <label for="motivo">Motivo</label>
-        <input type="text" name="motivo" id="motivo">
-        <br>
-        <label for="fundamento">Fundamento</label>
-        <input type="text" name="fundamento" id="fundamento">
-        <br>
-        <label for="fecha">Fecha</label>
-        <input type="date" name="fecha" id="fecha">
-        <br>
-        <label for="fecha">Hora</label>
-        <input type="time" name="hora" id="hora">
-        <br>
-        <label for="lugar">Lugar</label>
-        <input type="text" name="lugar" id="lugar">
-        <br>
-        <label for="entidad">Garantia</label>
-        <input type="text" name="garantia" id="garantia">
-        <br>
-        <label for="entidad">Propetiario</label>
-        <input type="text" name="propetiario" id="propetiario">
-        <br>
-        <label for="entidad">Conductor</label>
-        <input type="text" name="conductor" id="conductor">
-        <br>
-        <label for="entidad">Entidad</label>
-        <input type="text" name="entidad" id="entidad">
-        <br>
-        <label for="numLicencia">NumLicencia</label>
-        <input type="text" name="numLicencia" id="numLicencia">
-        <br>
-        <label for="id">ID de vehículo</label>
-        <input type="text" name="id" id="id">
-        <br>
-        <label for="folioCirculacion">Folio Tarjeta de Circulación</label>
-        <input type="text" name="folioCirculacion" id="folioCirculacion">
-        <br>
-        <button type="submit">Subir</button>
+    <form action="Itarjeta_verificacion.php" id="form" method="get">
+      <label for="folioCertificado">Folio Certificado</label>
+      <input type="text" name="folioCertificado" id="folioCertificado" />
+      <br />
+      <label for="tipoServicio">Tipo Servicio</label>
+      <input type="text" name="tipoServicio" id="tipoServicio" />
+      <br />
+      <label for="entidad">Entidad</label>
+      <input type="text" name="entidad" id="entidad" />
+      <br />
+      <label for="municipio">Municipio</label>
+      <input type="text" name="municipio" id="municipio" />
+      <br />
+      <label for="numLineaVerifiacion">Número Linea Verifiación</label>
+      <input type="text" name="numLineaVerifiacion" id="numLineaVerifiacion" />
+      <br />
+      <label for="fechaExp">Fecha Exp</label>
+      <input type="date" name="fechaExp" id="fechaExp" />
+      <br />
+      <label for="horaSalida">Hora Salida</label>
+      <input type="time" name="horaSalida" id="horaSalida" />
+      <br />
+      <label for="motivo">Motivo</label>
+      <input type="text" name="motivo" id="motivo" />
+      <br />
+      <label for="semestre">Semestre</label>
+      <input type="number" name="semestre" id="semestre" />
+      <br />
+      <label for="tecnicoVerificador">Técnico Verificador</label>
+      <input type="text" name="tecnicoVerificador" id="tecnicoVerificador" />
+      <br />
+      <label for="vigencia">Vigencia</label>
+      <input type="date" name="vigencia" id="vigencia" />
+      <br />
+      <label for="idVehiculo">Id Vehiculo</label>
+      <input type="text" name="idVehiculo" id="idVehiculo" />
+      <br />
+      <label for="placa">Placa</label>
+      <input type="text" name="placa" id="placa" />
+      <br />
+      <label for="numCentro">numCentro</label>
+      <input type="text" name="numCentro" id="numCentro" />
+      <br />
+      <label for="tipoCarroceria">Tipo de carrocería</label>
+      <input type="text" name="tipoCarroceria" id="tipoCarroceria" />
+      <br />
+      <label for="horaEntrada">Hora entrada</label>
+      <input type="time" name="horaEntrada" id="horaEntrada" />
+      <br />
+      <button type="submit">Subir</button>
     </form>
-    -->
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function () {
-        "use strict";
-
-        window.addEventListener(
-          "load",
-          function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName("needs-validation");
-
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(
-              forms,
-              function (form) {
-                form.addEventListener(
-                  "submit",
-                  function (event) {
-                    if (form.checkValidity() === false) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                    }
-                    form.classList.add("was-validated");
-                  },
-                  false
-                );
-              }
-            );
-          },
-          false
-        );
-      })();
-    </script>
-
+  -->
   </body>
 </html>

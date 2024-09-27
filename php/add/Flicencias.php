@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera']) && isset($_SESSION['Admin']) && $_SESSION['Admin'] == 1) {
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +37,7 @@
             d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
           />
         </svg>
-        <h2>Agregue un propietario</h2>
+        <h2>Agregue una licencia</h2>
       </div>
 
       <div class="row">
@@ -38,17 +45,32 @@
           <h4 class="mb-3">Información personal</h4>
           <form
             class="needs-validation"
+            action="./Ilicencias.php"
             method="get"
-            action="Ipropietario.php"
             novalidate
           >
             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="nombre">Nombre</label>
+              <div class="col-lg-6 mb-3">
+                <label for="numLicencia">Número de Licencia</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="nombre"
+                  id="numLicencia"
+                  name="numLicencia"
+                  placeholder=""
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+
+              <div class="col-lg-6 mb-3">
+                <label for="idConductor">Id de conductor</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="idConductor"
+                  name="idConductor"
                   placeholder=""
                   value=""
                   required
@@ -57,61 +79,75 @@
                   Valid first name is required.
                 </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="apellidos">Apellidos</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="apellidos"
-                  placeholder=""
-                  value=""
-                  required
-                />
-                <div class="invalid-feedback">Valid last name is required.</div>
-              </div>
             </div>
 
-            <div class="mb-3">
-              <label for="RFC">RFC </label>
-              <input
-                type="text"
-                class="form-control"
-                id="RFC"
-                placeholder=""
-              />
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="municipio">Municipio</label>
+                <label for="fechaExp">Fecha de expedición</label>
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  id="municipio"
+                  id="fechaExp"
+                  name="fechaExp"
                   placeholder="Querétaro"
                 />
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="localidad">Localidad</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="localidad"
-                  placeholder="Milenio III"
+              <div class="mb-3 col-md-6">
+                  <label for="vigencia">Vigencia</label>
+                <input 
+                list="vigencias"
+                class="form-control"
+                id="vigencia"
+                name="vigencia"
+                placeholder=""
                 />
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
+                <datalist id="vigencias">
+                  <option value="3">3 años</option>
+                  <option value="5">5 años</option>
+                </datalist>  
+                <div class="invalid-feedback">Valid vigencia is required</div>
               </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="tipo">Tipo de licencia</label>
+              <input
+                list="tipos"
+                class="form-control"
+                id="tipo"
+                name="tipo"
+                placeholder=""
+                value=""
+                required
+              />
+              <datalist id="tipos">
+                <option value="A"></option>
+                <option value="B"></option>
+                <option value="C"></option>
+                <option value="D"></option>
+                <option value="E"></option>
+              </datalist>
+              <div class="invalid-feedback">Valid first name is required.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="restriccion">Restricciones</label>
+              <input
+                type="text"
+                class="form-control"
+                id="restriccion"
+                name="restriccion"
+                placeholder=""
+                value=""
+              />
+              <div class="invalid-feedback">Valid first name is required.</div>
             </div>
             <hr class="mb-4" />
             <button class="btn btn-primary btn-lg btn-block" type="submit">
-              Continue to checkout
+              Agregar licencia
             </button>
           </form>
         </div>
@@ -121,26 +157,6 @@
         <p class="mb-1">&copy; Sistema de control vehicular</p>
       </footer>
     </div>
-    <!--
-    <form method="get" id="form" action="Ipropietario.php">
-      <label for="idPropietario">ID Propietario</label>
-      <input type="text" name="idPropietario" id="idPropietario" />
-      <br />
-      <label for="nombre">Nombre</label>
-      <input type="text" name="nombre" id="nombre" />
-      <br />
-      <label for="municipio">Municipio</label>
-      <input type="text" name="municipio" id="municipio" />
-      <br />
-      <label for="localidad">Localidad</label>
-      <input type="text" name="localidad" id="localidad" />
-      <br />
-      <label for="RFC">RFC</label>
-      <input type="text" name="RFC" id="RFC" />
-      <br />
-      <button type="submit">Subir</button>
-    </form>
-    -->
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function () {
@@ -176,3 +192,4 @@
     </script>
   </body>
 </html>
+  

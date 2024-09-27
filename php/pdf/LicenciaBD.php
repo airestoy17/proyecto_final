@@ -1,17 +1,23 @@
 <?php
-require('../fpdf.php');
+require('./fpdf.php');
 include('./Conexion.php');
+include('../files/generarXML.php');
 
 /* Conectar a la base de datos */
-$licencia = 2;
+$licencia = $_GET['numLicencia'];
 $Con = Conectar();
 $SQL = "SELECT L.*, C.* 
 FROM Licencias L, Conductores C
 WHERE L.NumLicencia = '$licencia'
 AND L.IdConductor = C.Id;";
 $Result = Ejecutar($Con, $SQL);
-$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
+$Result2 = Ejecutar($Con, $SQL);
 /* -------------------------- */
+
+#Comprobante
+generarXML($Result2, 'licencia');
+$Fila = mysqli_fetch_array($Result, MYSQLI_BOTH);
+
 
 $pdf = new FPDF();
 
@@ -30,9 +36,10 @@ $licencia = utf8_decode($Fila["NumLicencia"]);
 $tipoConductor = utf8_decode("AUTOMOVILISTA");
 
 # Nombre del conductor
-$nombre = utf8_decode(strtoupper($Fila['Nombre']));
-$apellidoPaterno = utf8_decode(strtoupper($Fila['apellidoPaterno']));
-$apellidoMaterno = utf8_decode(strtoupper($Fila['apellidoMaterno']));
+$nombre_lista = explode(" ", strtoupper($Fila['Nombre']));
+$nombre = utf8_decode($nombre_lista[0]);
+$apellidoPaterno = utf8_decode($nombre_lista[1]);
+$apellidoMaterno = utf8_decode($nombre_lista[2]);
 
 # Fechas y antigüedad
 $fechaNacimiento = utf8_decode($Fila['FechaNacimiento']);
@@ -54,6 +61,11 @@ $donador = $Fila['Donador'] == 0 ? utf8_decode('Si') : utf8_decode('No');
 $numeroEmegencia = utf8_decode("000-442-380-2184");
 $nombreFirma = utf8_decode("M. EN .P JUAN MARCOS GRANADOS TORRES SECRETARIO DE SEGURIDAD CIUDADANA");
 $fundamento = utf8_decode("Officia consequat adipisicing veniam ex excepteur dolor aute duis nostrud veniam aliqua ea tempor exercitation. Sint anim non ut Lorem et sit mollit aliquip laboris. Adipisicing proident excepteur exercitation dolor aliqua aliqua aliqua do eiusmod cupidatat. Est aliquip irure ea fugiat proident commodo nisi nisi Lorem culpa sit ipsum excepteur duis. Voluptate cillum officia pariatur non irure exercitation magna. Quis aliquip do irure pariatur exercitation nulla cillum mollit do. Nisi pariatur minim aliqua id eiusmod do in culpa voluptate pariatur.");
+
+# Imagenes para la firma y foto
+$uploadPath = dirname(__DIR__, 2);
+$firma = $uploadPath . $Fila['Firma'];
+$foto = $uploadPath  .$Fila['Foto'];
 
 
 #  Imagen del estado
@@ -86,7 +98,7 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->SetX(90);
 $pdf->Cell(30, 5, $tipoConductor, 0, 1, 'R');
-$pdf->Image('./foto.jpg', 130, 70, 70, 70);
+$pdf->Image($foto, 130, 70, 70, 70);
 
 # Nombre del conductor
 $pdf->SetY(140);
@@ -152,7 +164,7 @@ $pdf->SetX(80);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(30, 7, utf8_decode('Firma'), 0, 1);
-$pdf->Image('firma.jpg', 70, 235, 25, 25);
+$pdf->Image($firma, 70, 235, 25, 25);
 
 # Aviso legal
 $pdf->SetY(262);

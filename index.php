@@ -19,17 +19,22 @@
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 ">
 
-            <form action="" method="post">
+            <form action="./php/usuarios/valida_acceso.php" method="post" enctype="multipart/form-data">
               <h3 class="mb-5 text-center">Iniciar sesión</h3>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Correo</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp" placeholder="Enter email">
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              </div>
+
+              <div class="form-group">
+                <label for="certificado">Certificado de seguridad</label>
+                <input type="file" class="form-control" id="certificado" name="certificado" >
               </div>
 
               <!-- Checkbox -->

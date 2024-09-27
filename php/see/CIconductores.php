@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['Bandera'])) {
+    include("Conexion.php");
+} else {
+    print('<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=/proyecto_final/index.php">');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,31 +21,50 @@
     <?php include('../header.php') ?>
     <div class="container-fluid">
         <div class="row ">
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <h1 class="mb-4 mt-4">Conductores</h1>
             </div>
-            <div class="col-lg-1">
-                <input type="search" class="form-control ds-input mb-4 mt-4" id="search-input" placeholder="Buscar..." aria-label="Buscar a..." autocomplete="off" data-docs-version="4.6" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-            </div>
-            <div class="col-lg-1">
-                <a href="./../add/Fconductores.html" class="btn btn-primary float-right mb-4 mt-4">Añadir conductor</a>
+            <div class="col-lg-6">
+                <form action="./CIconductores.php">
+                    <div class="row">
+                        <?php
+                            include('CIbuscar.php');
+                            $SQL = "SELECT * FROM Conductores";
+                            if($_SESSION['Admin'] == 1){
+                                print('
+                                    <div class="col-lg-4">
+                                        <a href="./../add/Fpropietario.php" class="btn btn-primary float-right mb-4 mt-4">Añadir propietario</a>
+                                    </div>
+                                ');
+                                generar_buscar($SQL);
+                            } else {
+                                generar_buscar($SQL);
+                            }
+                        ?>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                # Subir datos para busqueda 
-
                 # Datos para busqueda
-                include("Conexion.php");
                 include("Crear_tabla.php");
                 $Con = Conectar();
-                $SQL = "SELECT * FROM Conductores";
+                if(isset($_GET['search-field'])){
+                    $search_field = $_REQUEST['search-field'];
+                    $search_value = $_REQUEST['search-value'];
+                    $SQL = "SELECT * FROM Conductores
+                            WHERE $search_field = $search_value";
+                } else {
+                    $SQL = "SELECT * FROM Conductores";
+                }
                 $Result = Ejecutar($Con, $SQL);
                 crear_tabla($Result);
                 ?>
-                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

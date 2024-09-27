@@ -1,5 +1,5 @@
 <?php
-    $idPropietario = $_REQUEST['idPropietario'];
+    $idPropietario = $_REQUEST['id'];
     $nombre = $_REQUEST['nombre'];
     $municipio = $_REQUEST['municipio'];
     $localidad = $_REQUEST['localidad'];
